@@ -89,9 +89,9 @@ body {
 }
 
 .hetgnal {
-    position: relative;
-    top: auto;
-    left: auto;
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -108,7 +108,7 @@ body {
     letter-spacing: 1px;
     min-width: 110px;
     text-align: center;
-    margin: 20px auto 0 auto;
+    margin: 0;
     outline: none;
     z-index: 10;
     gap: 8px;
@@ -171,8 +171,10 @@ body {
     }
 
     .hetgnal {
-        width: 100%;
-        max-width: 220px;
+        left: 12px;
+        bottom: 12px;
+        width: auto;
+        max-width: none;
         font-size: 18px;
         padding: 10px 16px;
         border-radius: 12px;
