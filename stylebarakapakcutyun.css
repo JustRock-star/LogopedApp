@@ -48,41 +48,44 @@ body {
 
 .vank-container {
     position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
     width: min(92vw, 900px);
-    min-width: 0;
-    height: auto;
-    min-height: 220px;
+    height: 120px;
     overflow: hidden;
     margin: 40px auto 0 auto;
     background: #fffbe6;
     border-radius: 24px;
     box-shadow: 0 4px 24px #0001;
     box-sizing: border-box;
-    padding: 12px;
+    padding: 0;
 }
 
 .vankdiv1 {
-    position: relative;
-    width: 100%;
-    left: 0;
-    top: 0;
-    font-size: clamp(18px, 3vw, 32px);
-    text-align: center;
+    position: absolute;
+    inset: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    font-size: clamp(18px, 3vw, 32px);
     line-height: 1.4;
-    transition: transform 0.7s;
     color: rgb(255, 0, 0);
     font-family: Arial, sans-serif;
     user-select: none;
     background: #fff;
-    padding: 18px 12px;
     border-radius: 18px;
     box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(25px);
+    transition: transform 0.7s ease, opacity 0.7s ease, visibility 0.7s ease;
+}
+
+.vankdiv1.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 .hetgnal {
@@ -157,13 +160,13 @@ body {
 
     .vank-container {
         width: 94vw;
+        height: 100px;
         margin-top: 18px;
         border-radius: 18px;
     }
 
     .vankdiv1 {
         font-size: 16px;
-        padding: 14px 10px;
         border-radius: 14px;
     }
 

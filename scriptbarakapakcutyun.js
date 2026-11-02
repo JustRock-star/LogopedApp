@@ -1,42 +1,38 @@
 document.querySelectorAll('.inputaragutyun').forEach(input => {
-    input.addEventListener('change', function() {
+    input.addEventListener('change', function () {
         const checked = document.querySelector('.inputaragutyun:checked');
-        if (checked) {
-            console.log(checked.value);
-        }
+        if (!checked) return;
+
+        const value = Number(checked.value);
+        if (value === 1) speed = 3000;
+        else if (value === 2) speed = 2000;
+        else if (value === 3) speed = 1500;
+
+        scheduleNext();
     });
 });
-
 
 let speed = 3000;
+const items = [...document.querySelectorAll('.vankdiv1')];
+let currentIndex = 0;
+let timerId = null;
 
-document.querySelectorAll('.inputaragutyun').forEach(input => {
-    input.addEventListener('change', function() {
-        const checked = document.querySelector('.inputaragutyun:checked');
-        if (checked) {
-            if (checked.value == "1") speed = 3000;
-            else if (checked.value == "2") speed = 2000;
-            else if (checked.value == "3") speed = 1500;
-        }
+function showCurrent() {
+    items.forEach((item, index) => {
+        item.classList.toggle('active', index === currentIndex);
     });
-});
+}
 
-const container = document.querySelector('.vank-container');
-const blockHeight = container.offsetHeight;
-
-function moveNext() {
-    const first = container.firstElementChild;
-    if (!first) return;
-    first.style.transform = `translateY(-${blockHeight}px)`;
-    setTimeout(() => {
-        first.style.transition = '';
-        first.style.transform = '';
-        container.appendChild(first);
-        setTimeout(() => {
-            first.style.transition = 'transform 0.7s';
-        }, 20);
-        moveNext();
+function scheduleNext() {
+    clearTimeout(timerId);
+    timerId = setTimeout(() => {
+        currentIndex = (currentIndex + 1) % items.length;
+        showCurrent();
+        scheduleNext();
     }, speed);
 }
 
-moveNext();
+if (items.length) {
+    showCurrent();
+    scheduleNext();
+}
