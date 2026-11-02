@@ -180,44 +180,6 @@ body{
     opacity: 0.6;
 } */
 
-@keyframes twinkle {
-    0%, 100% { opacity: 0.6; }
-    50% { opacity: 1; }
-}
-
-/* ===== ТРАВА И ЦВЕТЫ ===== */
-.grass {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 120px;
-    background: linear-gradient(to top, #78c850 50%, transparent 100%);
-    z-index: 0;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    padding-bottom: 10px;
-    gap: 15px;
-   
-    
-}
-
-.grass::before,
-.grass::after {
-    content: '🌸🌿🌼🌷';
-    font-size: 80px;
-    animation: sway 3s ease-in-out infinite alternate;
-}
-
-@keyframes sway {
-    from { transform: translateX(0px) rotate(-2deg); }
-    to { transform: translateX(3px) rotate(2deg); }
-}
-
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
 /* ===== ССЫЛКИ В КНОПКАХ ===== */
 button a {
     text-decoration: none;
@@ -225,48 +187,6 @@ button a {
     display: block;
     width: 100%;
     height: 100%;
-}
-
-.sun {
-    position: absolute;
-    top: -10%;
-    left: 88%;
-    transform: translateX(-50%);
-    font-size: 200px;
-    color: #ffcc00;
-    z-index: 1;
-    /* animation: rotate 10s linear infinite;
-    animation: sway 3s ease-in-out infinite alternate; */
-    animation: sway 3s ease-in-out infinite alternate, rotate 20s linear infinite;
-}
-
-.amp1 {
-    position: absolute;
-    top: -7%;
-    left: 15%;
-    font-size: 150px;
-    color: #ffffff;
-    z-index: 1;
-    animation: sway 3s ease-in-out infinite alternate, sway 3s linear infinite;
-}
-.amp2 {
-    position: absolute;
-    top: -7%;
-    left: 1%;
-    font-size: 150px;
-    color: #ffffff;
-    z-index: 1;
-    animation: sway 3s ease-in-out infinite alternate, sway 3s linear infinite;
-}
-
-.amp3 {
-    position: absolute;
-    top: -7%;
-    left: 73%;
-    font-size: 150px;
-    color: #ffffff;
-    z-index: 1;
-    animation: sway 3s ease-in-out infinite alternate, sway 3s linear infinite;
 }
 
 .home-btn {
