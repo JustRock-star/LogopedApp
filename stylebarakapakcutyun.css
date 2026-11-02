@@ -2,71 +2,20 @@ body {
     background-color: rgb(249, 255, 171);
 }
 
-@media (max-width: 480px) {
-  body {
+body {
     font-size: 14px; 
-  }
-  .container {
+}
+.container {
     padding: 10px;
-  }
-  .header {
+}
+.header {
     font-size: 18px;
-  }
-  .item {
-    width: 100%; 
+}
+.item {
+    width: 80%; 
     margin-bottom: 10px;
-  }
 }
 
-@media (min-width: 481px) and (max-width: 768px) {
-  body {
-    font-size: 16px; 
-  }
-  .container {
-    padding: 15px;
-  }
-  .header {
-    font-size: 22px;
-  }
-  .item {
-    width: 48%;
-    margin-bottom: 15px;
-  }
-}
-
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  body {
-    font-size: 18px;
-  }
-  .container {
-    padding: 20px;
-  }
-  .header {
-    font-size: 26px;
-  }
-  .item {
-    width: 30%; 
-    margin-bottom: 20px;
-  }
-}
-
-
-@media (min-width: 1025px) {
-  body {
-    font-size: 20px; 
-  }
-  .container {
-    padding: 30px;
-  }
-  .header {
-    font-size: 32px;
-  }
-  .item {
-    width: 22%; 
-    margin-bottom: 30px;
-  }
-}
 
 .divaragutyun {
     display: flex;
