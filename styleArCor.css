@@ -4,6 +4,7 @@ body {
     padding: 0;
     min-height: 100vh;
     box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .text {
@@ -31,25 +32,17 @@ body {
     justify-self: center;
 }
 
-.topItems > .dropZone {
+.topItems > .dropZone,
+.dropZone {
     grid-row: 2;
     justify-self: center;
     width: 240px;
     height: 88px;
-    margin: 8px 0 0 0;
+    margin: 8px auto 0 auto;
     border: 2px dashed #1976d2;
     border-radius: 14px;
     background: linear-gradient(45deg, #eaf6fe, #fff9e8);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.dropZone {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -67,6 +60,7 @@ body {
 .item3Top {
     font-size: 150px;
     margin: 0 16px;
+    text-align: center;
 }
 
 .bottomItems {
@@ -74,7 +68,7 @@ body {
     justify-content: center;
     align-items: flex-start;
     gap: 80px;
-    margin-top: 154px; /* ← стало больше */
+    margin-top: 154px;
     flex-wrap: wrap;
 }
 
@@ -91,7 +85,7 @@ body {
 
 #checkBtn {
     display: block;
-    margin: 40px auto 0 auto;
+    margin: 40px auto 64px auto;
     padding: 12px 48px;
     font-size: 28px;
     font-family: 'Courier New', Courier, monospace;
@@ -104,7 +98,6 @@ body {
     transition: background 0.2s, color 0.2s, border 0.2s, transform 0.15s, box-shadow 0.2s;
     letter-spacing: 2px;
     font-weight: bold;
-    margin-bottom: 64px;
 }
 
 #checkBtn:hover {
@@ -196,36 +189,88 @@ body {
     box-shadow: 0 8px 20px rgba(255, 107, 107, 0.6);
 }
 
-/* Планшеты */
+/* Планшеты и мобильные */
 @media (max-width: 900px) {
-    .text { font-size: 7vw; }
-    .topItems, .bottomItems { gap: 6vw; }
-    .item1Top, .item2Top, .item3Top { font-size: 12vw; }
-    .item1Bottom, .item2Bottom, .item3Bottom { font-size: 5vw; min-width: 20vw; }
-    #checkBtn { font-size: 4vw; padding: 2vw 8vw; border-radius: 6vw; }
-    .nav-back { font-size: 3vw; padding: 2vw 4vw; }
-    .nav-prev { font-size: 3vw; padding: 2vw 4vw; }
-    #next { font-size: 3vw; padding: 2vw 4vw; }
-}
+    /* Опускаем заголовок ниже верхних кнопок */
+    .text {
+        font-size: 7vw;
+        margin-top: 75px;
+        padding: 0 12px;
+    }
 
-/* Мобильные */
-@media (max-width: 600px) {
-    .text { font-size: 9vw; margin-top: 5vw; }
-    .topItems, .bottomItems { flex-direction: column; gap: 4vw; margin-top: 4vw; }
-    .item1Top, .item2Top, .item3Top { font-size: 16vw; }
-    .item1Bottom, .item2Bottom, .item3Bottom { font-size: 7vw; min-width: 50vw; }
-    #checkBtn { font-size: 6vw; padding: 3vw 10vw; border-radius: 8vw; }
-    .nav-back { font-size: 4vw; padding: 2vw 3vw; bottom: 2vw; left: 2vw; }
-    .nav-prev { font-size: 4vw; padding: 2vw 3vw; }
-    #next { font-size: 4vw; padding: 2vw 3vw; right: 2vw; bottom: 2vw; }
-}
+    /* Выстраиваем картинки и поля вертикально друг за другом */
+    .topItems {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-top: 20px;
+    }
 
-.dropZone {
-    width: 150px;
-    height: 50px;
-    border: 2px dashed #2196f3;
-    margin: 10px auto;
-    background: linear-gradient(45deg, #fffbe6, #e3f2fd);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    .topItems > .item1Top { grid-row: 1; }
+    .topItems > .item2Top { grid-row: 3; }
+    .topItems > .item3Top { grid-row: 5; }
+
+    .topItems > .dropZone,
+    .dropZone {
+        grid-row: auto;
+        width: 200px;
+        height: 64px;
+        margin: 0 auto 18px auto;
+    }
+
+    .item1Top,
+    .item2Top,
+    .item3Top {
+        font-size: 95px;
+        margin: 0 auto;
+    }
+
+    /* Слова в столбик */
+    .bottomItems {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        margin-top: 30px;
+    }
+
+    .item1Bottom,
+    .item2Bottom,
+    .item3Bottom {
+        font-size: 36px;
+        margin: 4px 0;
+        min-width: auto;
+    }
+
+    #checkBtn {
+        font-size: 22px;
+        padding: 12px 36px;
+        margin: 24px auto 40px auto;
+    }
+
+    /* Кнопки Назад и Следующая — наверху страницы */
+    .nav-back {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        bottom: auto;
+        padding: 10px 18px;
+        font-size: 15px;
+        border-radius: 14px;
+    }
+
+    #next,
+    .nav-buttons #next {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        bottom: auto;
+        padding: 10px 18px;
+        font-size: 15px;
+        border-radius: 14px;
+    }
+
+    .nav-prev {
+        padding: 10px 18px;
+        font-size: 15px;
+        border-radius: 14px;
+    }
 }
