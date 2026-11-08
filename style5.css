@@ -4,6 +4,7 @@ body {
     padding: 0;
     min-height: 100vh;
     box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .text {
@@ -31,24 +32,17 @@ body {
     justify-self: center;
 }
 
-.topItems > .dropZone {
+.topItems > .dropZone,
+.dropZone {
     grid-row: 2;
     justify-self: center;
     width: 220px;
     height: 80px;
-    margin: 8px 0 0 0;
+    margin: 8px auto 0 auto;
     border: 2px dashed #1976d2;
     border-radius: 14px;
     background: linear-gradient(45deg, #eaf6fe, #fff9e8);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);    display: flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.dropZone {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -66,18 +60,8 @@ body {
 .item3Top {
     width: 200px;
     height: 250px;
-    margin: 0 16px;
-    margin-right: 180px;
-}
-
-.dropZone {
-    width: 240px;
-    height: 88px;
-    border: 2px dashed #1976d2;
-    margin: 10px auto;
-    background: linear-gradient(45deg, #eaf6fe, #fff9e8);
-    border-radius: 14px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    margin: 0 auto;
+    object-fit: contain;
 }
 
 .bottomItems {
@@ -85,7 +69,7 @@ body {
     justify-content: center;
     align-items: flex-start;
     gap: 80px;
-    margin-top: 154px; /* ← стало больше */
+    margin-top: 154px;
     flex-wrap: wrap;
 }
 
@@ -102,7 +86,7 @@ body {
 
 #checkBtn {
     display: block;
-    margin: 40px auto 0 auto;
+    margin: 40px auto 64px auto;
     padding: 12px 48px;
     font-size: 28px;
     font-family: 'Courier New', Courier, monospace;
@@ -115,7 +99,6 @@ body {
     transition: background 0.2s, color 0.2s, border 0.2s, transform 0.15s, box-shadow 0.2s;
     letter-spacing: 2px;
     font-weight: bold;
-    margin-bottom: 64px;
 }
 
 #checkBtn:hover {
@@ -210,28 +193,69 @@ body {
     box-shadow: 0 8px 20px rgba(78, 205, 196, 0.5);
 }
 
-/* Планшеты */
+/* Планшеты и мобильные (все элементы вертикально) */
 @media (max-width: 900px) {
-    .text { font-size: 7vw; }
-    .topItems, .bottomItems { gap: 6vw; }
-    .item1Top, .item2Top, .item3Top { font-size: 12vw; }
-    .item1Bottom, .item2Bottom, .item3Bottom { font-size: 5vw; min-width: 20vw; }
-    #checkBtn { font-size: 4vw; padding: 2vw 8vw; border-radius: 6vw; }
-    
-    .nav-back, .nav-buttons #next { padding: 3vw 6vw; font-size: 3vw; }
-    .nav-prev { padding: 3vw 6vw; font-size: 3vw; }
-}
+    .text {
+        font-size: 7vw;
+        margin-top: 20px;
+        padding: 0 10px;
+    }
 
-/* Мобильные */
-@media (max-width: 600px) {
-    .text { font-size: 9vw; margin-top: 5vw; }
-    .topItems, .bottomItems { flex-direction: column; gap: 4vw; margin-top: 4vw; }
-    .item1Top, .item2Top, .item3Top { font-size: 16vw; }
-    .item1Bottom, .item2Bottom, .item3Bottom { font-size: 7vw; min-width: 50vw; }
-    #checkBtn { font-size: 6vw; padding: 3vw 10vw; border-radius: 8vw; }
-    
-    .nav-back, .nav-buttons #next { padding: 4vw 8vw; font-size: 4vw; bottom: 15px; }
+    .topItems {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-top: 20px;
+    }
+
+    /* Чередуем: Картинка -> Зона -> Картинка -> Зона */
+    .topItems > .item1Top { grid-row: 1; }
+    .topItems > .item2Top { grid-row: 3; }
+    .topItems > .item3Top { grid-row: 5; }
+    .topItems > .dropZone {
+        grid-row: auto;
+        width: 200px;
+        height: 64px;
+        margin: 0 auto 16px auto;
+    }
+
+    .item1Top,
+    .item2Top,
+    .item3Top {
+        width: 150px;
+        height: 140px;
+        margin: 0 auto;
+        font-size: 12vw;
+    }
+
+    .bottomItems {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        margin-top: 30px;
+    }
+
+    .item1Bottom,
+    .item2Bottom,
+    .item3Bottom {
+        font-size: 40px;
+        margin: 4px 0;
+        min-width: auto;
+    }
+
+    #checkBtn {
+        font-size: 22px;
+        padding: 10px 36px;
+        margin: 24px auto 100px auto;
+    }
+
+    .nav-back,
+    .nav-buttons #next,
+    .nav-prev {
+        padding: 12px 20px;
+        font-size: 15px;
+        bottom: 15px;
+    }
+
     .nav-back { left: 15px; }
     .nav-buttons #next { right: 15px; }
-    .nav-prev { padding: 4vw 8vw; font-size: 4vw; }
 }
